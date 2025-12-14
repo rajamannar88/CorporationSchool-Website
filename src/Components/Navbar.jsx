@@ -9,7 +9,7 @@ export default function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const navItems = [
-    { name: 'Home', path: '/home' },
+    { name: 'Home', path: '/' },
     {
       name: 'About Us',
       dropdown: [
