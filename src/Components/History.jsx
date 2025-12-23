@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Clock, Eye, Target, Book, ChevronRight } from 'lucide-react';
+import { Clock, Eye, Target, ChevronRight } from 'lucide-react';
 import stoneimg from '../schoolassets/SchoolStonework.png'
 
 export default function History() {
@@ -16,21 +16,18 @@ export default function History() {
     <div className="relative group">
       {/* Stone Memorial Image Container */}
       <div className="relative overflow-hidden rounded-lg shadow-2xl transform hover:scale-105 transition-all duration-500">
-        {/* Replace src with your image path */}
         <img 
           src={stoneimg}
           alt="Foundation Stone Memorial"
           className="w-full h-auto object-cover"
         />
-        
-        {/* Optional Overlay on Hover */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"></div>
       </div>
 
       {/* 3D Shadow Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-transparent via-black/20 to-black/40 rounded-lg transform translate-y-4 translate-x-4 -z-10 blur-md"></div>
       
-      {/* Optional: Decorative Corner Accents */}
+      {/* Decorative Corner Accents */}
       <div className="absolute -top-2 -left-2 w-8 h-8 border-l-4 border-t-4 border-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-4 border-b-4 border-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </div>
@@ -77,13 +74,7 @@ export default function History() {
             <p>
               Under the administration of the Madurai Municipal Corporation, we have continuously evolved 
               to meet the changing educational needs of our community. Our commitment to quality education 
-              has remained unwavering throughout the decades, producing countless successful alumni who 
-              contribute meaningfully to society.
-            </p>
-
-            <p>
-              Today, we stand proud as a testament to educational excellence, combining traditional values 
-              with modern teaching methodologies to prepare students for the challenges of tomorrow.
+              has remained unwavering throughout the decades.
             </p>
           </div>
         </div>
@@ -91,7 +82,7 @@ export default function History() {
     </div>
   );
 
-  // Vision Content
+  // Vision Content (Updated)
   const VisionContent = () => (
     <div className="space-y-6">
       <div className="flex items-start gap-4">
@@ -100,75 +91,36 @@ export default function History() {
         </div>
         <div>
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
-          <div className="prose prose-lg text-gray-700 space-y-4">
-            <p className="text-xl font-semibold text-purple-700 italic border-l-4 border-purple-600 pl-4">
-              "To be a leading institution that nurtures excellence, innovation, and character, 
-              empowering every student to reach their fullest potential."
-            </p>
-            
-            <p>
-              We envision a future where our school stands as a model of educational excellence, 
-              recognized for our commitment to holistic development and academic achievement. Our 
-              vision encompasses:
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-4 my-6">
-              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  Academic Excellence
-                </h4>
-                <p className="text-sm text-gray-700">
-                  Creating an environment where academic achievement thrives through innovative 
-                  teaching methods and comprehensive curriculum.
-                </p>
-              </div>
-
-              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  Character Building
-                </h4>
-                <p className="text-sm text-gray-700">
-                  Fostering integrity, responsibility, and ethical values that shape students 
-                  into responsible citizens.
-                </p>
-              </div>
-
-              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  Innovation & Technology
-                </h4>
-                <p className="text-sm text-gray-700">
-                  Embracing modern technology and innovative approaches to prepare students 
-                  for a digital future.
-                </p>
-              </div>
-
-              <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-                <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  Global Citizenship
-                </h4>
-                <p className="text-sm text-gray-700">
-                  Developing awareness and respect for diverse cultures while nurturing 
-                  global perspectives.
-                </p>
-              </div>
+          
+          <div className="space-y-6">
+            {/* English Vision */}
+            <div className="bg-purple-50 p-6 rounded-xl border-l-4 border-purple-600 shadow-sm">
+              <p className="text-xl text-purple-900 font-medium leading-relaxed">
+                "To create an inclusive and empowering learning environment where every student, 
+                regardless of economic background, can achieve academic excellence, personal growth, 
+                and lifelong success."
+              </p>
             </div>
 
-            <p>
-              We aspire to create an inclusive learning environment where every student feels valued, 
-              supported, and inspired to pursue their dreams with confidence and determination.
-            </p>
+            {/* Tamil Vision */}
+            <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
+              <h4 className="text-purple-700 font-bold mb-3 flex items-center gap-2">
+                <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
+                எங்கள் பார்வை
+              </h4>
+              <p className="text-gray-700 text-lg leading-relaxed font-tamil">
+                "பொருளாதாரப் பின்னணியைப் பொருட்படுத்தாமல், ஒவ்வொரு மாணவரும் கல்விசார் சிறப்பையும், 
+                தனிப்பட்ட வளர்ச்சியையும், வாழ்நாள் முழுவதும் நீடிக்கும் வெற்றியையும் அடையக்கூடிய, 
+                அனைவரையும் உள்ளடக்கிய மற்றும் அதிகாரமளிக்கும் கற்றல் சூழலை உருவாக்குதல்."
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 
-  // Mission Content
+  // Mission Content (Updated)
   const MissionContent = () => (
     <div className="space-y-6">
       <div className="flex items-start gap-4">
@@ -177,60 +129,55 @@ export default function History() {
         </div>
         <div>
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-          <div className="prose prose-lg text-gray-700 space-y-4">
-            <p className="text-lg text-gray-800">
-              Our mission is to provide a comprehensive educational experience that empowers students 
-              to achieve academic excellence, develop strong character, and become responsible members 
-              of society through:
-            </p>
-
+          
+          <div className="space-y-8">
+            {/* English Mission Points */}
             <div className="space-y-4">
-              <div className="bg-white border-l-4 border-green-600 p-5 rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-gray-900 mb-2 text-lg">Quality Education</h4>
-                <p className="text-gray-700">
-                  Delivering a rigorous and relevant curriculum that challenges students intellectually 
-                  while addressing individual learning needs and styles.
-                </p>
+              <div className="bg-white border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm hover:translate-x-1 transition-transform">
+                <p className="text-gray-800">Provide equitable access to quality education for all students.</p>
               </div>
-
-              <div className="bg-white border-l-4 border-green-600 p-5 rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-gray-900 mb-2 text-lg">Holistic Development</h4>
-                <p className="text-gray-700">
-                  Nurturing physical, emotional, social, and intellectual growth through diverse 
-                  programs in sports, arts, and co-curricular activities.
-                </p>
+              <div className="bg-white border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm hover:translate-x-1 transition-transform">
+                <p className="text-gray-800">Support holistic development—academic, emotional, social, and physical.</p>
               </div>
-
-              <div className="bg-white border-l-4 border-green-600 p-5 rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-gray-900 mb-2 text-lg">Dedicated Faculty</h4>
-                <p className="text-gray-700">
-                  Employing passionate, qualified educators who are committed to student success 
-                  and continuous professional development.
-                </p>
+              <div className="bg-white border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm hover:translate-x-1 transition-transform">
+                <p className="text-gray-800">Offer skill-building opportunities and resources for personal and professional growth.</p>
               </div>
-
-              <div className="bg-white border-l-4 border-green-600 p-5 rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-gray-900 mb-2 text-lg">Safe Environment</h4>
-                <p className="text-gray-700">
-                  Creating a secure, inclusive, and supportive atmosphere where every student 
-                  can learn, grow, and thrive without fear or discrimination.
-                </p>
+              <div className="bg-white border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm hover:translate-x-1 transition-transform">
+                <p className="text-gray-800">Foster a safe, nurturing, and motivating environment that encourages students to dream big and realize their potential.</p>
               </div>
-
-              <div className="bg-white border-l-4 border-green-600 p-5 rounded-r-lg shadow-sm hover:shadow-md transition-shadow">
-                <h4 className="font-bold text-gray-900 mb-2 text-lg">Community Partnership</h4>
-                <p className="text-gray-700">
-                  Building strong relationships with families and the community to support 
-                  student learning and foster civic responsibility.
-                </p>
+              <div className="bg-white border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm hover:translate-x-1 transition-transform">
+                <p className="text-gray-800">Engage parents and the community to strengthen education and student well-being.</p>
               </div>
             </div>
 
-            <p className="text-gray-800 font-medium bg-green-50 p-4 rounded-lg border border-green-200 mt-6">
-              Through these commitments, we strive to prepare our students not just for examinations, 
-              but for life—equipping them with the knowledge, skills, and values necessary to succeed 
-              in an ever-changing world.
-            </p>
+            {/* Tamil Mission Section */}
+            <div className="bg-green-50 rounded-xl p-6 border border-green-100">
+              <h4 className="text-green-800 font-bold mb-4 text-lg border-b border-green-200 pb-2">
+                எங்கள் பணி
+              </h4>
+              <ul className="space-y-3 text-gray-700 font-tamil">
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 mt-1.5">•</span>
+                  <span>அனைத்து மாணவர்களுக்கும் தரமான கல்விக்கான சமமான அணுகலை வழங்குதல்.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 mt-1.5">•</span>
+                  <span>கல்வி, உணர்ச்சி, சமூக மற்றும் உடல் ரீதியான முழுமையான வளர்ச்சிக்கு ஆதரவளித்தல்.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 mt-1.5">•</span>
+                  <span>தனிப்பட்ட மற்றும் தொழில்முறை வளர்ச்சிக்கான திறன் மேம்பாட்டு வாய்ப்புகளையும் வளங்களையும் வழங்குதல்.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 mt-1.5">•</span>
+                  <span>மாணவர்கள் பெரிய கனவுகளைக் காணவும், தங்கள் திறனை உணர்ந்து கொள்ளவும் ஊக்குவிக்கும் ஒரு பாதுகாப்பான, ஆதரவான மற்றும் ஊக்கமளிக்கும் சூழலை வளர்த்தல்.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-green-600 mt-1.5">•</span>
+                  <span>கல்வியையும் மாணவர்களின் நல்வாழ்வையும் வலுப்படுத்த பெற்றோர்களையும் சமூகத்தையும் ஈடுபடுத்துதல்.</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

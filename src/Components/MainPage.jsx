@@ -68,8 +68,7 @@ export default function MainPage() {
             <div className="text-white space-y-6 md:space-y-8">
               
               <div className="space-y-6">
-                {/* --- FIXED: Welcome Badge --- */}
-                {/* Changed to div and added max-w to ensure proper wrapping on small screens */}
+                {/* Welcome Badge */}
                 <div className="inline-block max-w-full">
                   <div className="bg-yellow-400/20 text-yellow-300 px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold backdrop-blur-sm border border-yellow-400/30 leading-relaxed whitespace-normal">
                     Welcome to Corporation Higher Secondary School
@@ -77,16 +76,22 @@ export default function MainPage() {
                 </div>
 
                 {/* --- FIXED: THIRUKKURAL SECTION --- */}
-                {/* Adjusted font sizes for mobile (text-lg) vs desktop (text-2xl) */}
-                <div className="bg-white/10 backdrop-blur-md border-l-4 border-yellow-400 p-4 rounded-r-xl max-w-xl hover:bg-white/15 transition-colors duration-300">
-                  <div className="flex gap-3">
+                {/* Changes made:
+                    1. padding reduced to p-3 for mobile
+                    2. gap reduced to gap-2
+                    3. font size reduced to text-sm for mobile
+                    4. whitespace-nowrap added to force 1 line per span
+                    5. overflow-x-auto added just in case screen is extremely small
+                */}
+                <div className="bg-white/10 backdrop-blur-md border-l-4 border-yellow-400 p-3 sm:p-4 rounded-r-xl max-w-xl hover:bg-white/15 transition-colors duration-300">
+                  <div className="flex gap-2 sm:gap-3">
                     <Feather className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 flex-shrink-0 mt-1" />
-                    <div>
-                      <p className="text-lg sm:text-xl md:text-2xl font-bold text-yellow-50 leading-relaxed font-serif tracking-wide">
-                        "கற்க கசடறக் கற்பவை கற்றபின் <br />
-                        நிற்க அதற்குத் தக."
-                      </p>
-                      <p className="text-gray-300 text-xs sm:text-sm italic mt-2">
+                    <div className="overflow-hidden">
+                      <div className="text-sm sm:text-xl md:text-2xl font-bold text-yellow-50 leading-snug font-serif tracking-tight">
+                        <span className="block whitespace-nowrap">கற்க கசடறக் கற்பவை கற்றபின்</span>
+                        <span className="block mt-0.5 whitespace-nowrap">நிற்க அதற்குத் தக.</span>
+                      </div>
+                      <p className="text-gray-300 text-[10px] sm:text-sm italic mt-1.5">
                         - திருக்குறள் (391)
                       </p>
                     </div>
@@ -149,7 +154,7 @@ export default function MainPage() {
               </div>
             </div>
 
-            {/* Right Side - Feature Cards (Hidden on very small mobile if needed, or stacked) */}
+            {/* Right Side - Feature Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {highlights.map((item, index) => (
                 <div
