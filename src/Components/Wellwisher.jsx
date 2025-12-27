@@ -1,229 +1,174 @@
-import React, { useState } from 'react';
-import { Users, Sparkles, ArrowDown, Landmark, Building2, MapPin, Layers, GitMerge, ChevronDown, ChevronUp, School, Quote, UserCircle } from 'lucide-react';
-// Import your images here. 
-// For now, I am using the same image for everyone as a placeholder. 
-// YOU MUST CHANGE THESE IMPORTS to your real photos.
-import Wellwisherimage from '../schoolassets/Wellwisher.jpg'; 
+import React from 'react';
+import { User, FileText, Download, Globe, ExternalLink } from 'lucide-react';
+import orgchartPdf from '../schoolassets/org_chart.pdf';
 
-export default function Wellwisher() {
-  const [expandedIndex, setExpandedIndex] = useState(null);
-
-  const toggleExpand = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
+export default function Administration() {
+  
+  // Data for the Chart - Updated for TN School Education 2024-25
+  const officers = {
+    head: {
+      name: "Tmt. S. Madhumathi, IAS",
+      designation: "Secretary to Government",
+      role: "School Education Department",
+      color: "border-indigo-600 text-indigo-700"
+    },
+    level2: [
+      {
+        name: "Dr. S. Kannappan",
+        designation: "Director of School Education",
+        role: "Head of Department",
+        color: "border-blue-500 text-blue-700"
+      },
+      {
+        name: "Dr. M. Aarthi, IAS",
+        designation: "State Project Director",
+        role: "Samagra Shiksha",
+        color: "border-purple-500 text-purple-700"
+      },
+      {
+        name: "Tmt. N. Latha",
+        designation: "Director",
+        role: "Govt Examinations",
+        color: "border-pink-500 text-pink-700"
+      }
+    ],
+    level3: [
+      {
+        name: "Tmt. A. Gnanagowri",
+        designation: "Joint Director",
+        role: "Higher Secondary",
+        color: "border-emerald-500 text-emerald-700"
+      },
+      {
+        name: "Thiru. R. Boopathi",
+        designation: "Joint Director",
+        role: "Secondary Education",
+        color: "border-emerald-500 text-emerald-700"
+      },
+      {
+        name: "Thiru. V. Jayakumar",
+        designation: "Joint Director",
+        role: "Vocational Education",
+        color: "border-emerald-500 text-emerald-700"
+      }
+    ]
   };
 
-  // --- 1. ADMINISTRATIVE HIERARCHY DATA (Government -> School) ---
-  const hierarchy = [
-    { 
-      label: 'Government', 
-      value: 'Government of Tamil Nadu', 
-      image: 'https://upload.wikimedia.org/wikipedia/commons/8/81/TamilNadu_Logo.svg',
-      icon: <Landmark className="w-5 h-5" />,
-      points: ['Formulates educational policies', 'Allocates budget', 'Ensures constitutional rights']
-    },
-    { 
-      label: 'Department', 
-      value: 'School Education Department', 
-      icon: <Building2 className="w-5 h-5" />,
-      points: ['Implements RTE Act', 'Develops curriculum', 'Ensures safety and infrastructure']
-    },
-    { 
-      label: 'Directorate', 
-      value: 'Directorate of School Education', 
-      icon: <GitMerge className="w-5 h-5" />,
-      points: ['Conducts public exams (SSLC/HSC)', 'Manages regional offices', 'Administers scholarships']
-    },
-    { 
-      label: 'District', 
-      value: 'Madurai District', 
-      icon: <MapPin className="w-5 h-5" />,
-      points: ['District-level administration', 'Monitors school performance', 'Teacher appointments']
-    },
-    { 
-      label: 'Block', 
-      value: 'Educational District / Block', 
-      icon: <Layers className="w-5 h-5" />,
-      points: ['Academic support', 'Teacher training workshops', 'Implementation of schemes']
-    },
-    { 
-      label: 'Local Body', 
-      value: 'Madurai Corporation', 
-      icon: <Users className="w-5 h-5" />,
-      points: ['Maintains school infrastructure', 'Manages sanitation & water', 'Supports local welfare']
-    },
-  ];
-
-  // --- 2. DIGNITARIES & PREFACE MESSAGES DATA ---
-  // Update the 'image' field for each person with their real photo
-  const dignitaries = [
-    {
-      role: "Honourable Mayor",
-      tamilRole: "மாண்புமிகு மேயர்",
-      name: "Mayor Name Here",
-      image: null, // Put Mayor's photo here
-      color: "from-yellow-400 to-orange-500",
-      message: "As the Mayor of Madurai Corporation, I am delighted to witness the growth of this institution. Education is the foundation of our city's future, and we are committed to providing world-class facilities to our corporation schools."
-    },
-    {
-      role: "Deputy Mayor",
-      tamilRole: "துணை மேயர்",
-      name: "Deputy Mayor Name Here",
-      image: null, // Put Deputy Mayor's photo here
-      color: "from-blue-400 to-indigo-500",
-      message: "Our goal is to ensure every child has access to quality education. I congratulate the teachers and parents for their continuous support in molding the students into responsible citizens."
-    },
-    {
-      role: "Corporation Commissioner",
-      tamilRole: "மாநகராட்சி ஆணையாளர்",
-      name: "Commissioner Name Here",
-      image: null, // Put Commissioner's photo here
-      color: "from-green-400 to-emerald-600",
-      message: "We are focused on strengthening the infrastructure and academic standards of our schools. This school stands as a testament to what disciplined administration and passionate teaching can achieve."
-    },
-    {
-      role: "City Education Officer (C.E.O)",
-      tamilRole: "கல்வி அதிகாரி",
-      name: "Education Officer Name",
-      image: null, // Put EO photo here
-      color: "from-purple-400 to-pink-500",
-      message: "Education goes beyond textbooks. It is about character building and skill development. I urge the students to make full use of the opportunities provided by the government."
-    },
-    {
-      role: "PTA President",
-      tamilRole: "பெற்றோர் ஆசிரியர் கழகத் தலைவர்",
-      name: "Thiru. M. Pandian",
-      image: Wellwisherimage, // Using the image you provided
-      color: "from-red-400 to-rose-500",
-      message: "As the PTA President, I am proud of the bridge we have built between parents and teachers. Together, we ensure a safe and nurturing environment for our children to thrive."
-    },
-    {
-      role: "Headmaster (I/C)",
-      tamilRole: "தலைமை ஆசிரியர் (பொறுப்பு)",
-      name: "HM Name Here",
-      image: null, // Put HM photo here
-      color: "from-cyan-400 to-blue-600",
-      message: "I welcome you all to our school. With the support of the Corporation and the PTA, we strive for excellence in both academics and extracurricular activities."
-    }
-  ];
+  // Profile Card Component
+  const OfficerCard = ({ officer, size = "normal" }) => {
+    const isLarge = size === "large";
+    const boxSize = isLarge ? "w-40 h-40" : "w-32 h-32";
+    
+    return (
+      <div className="flex flex-col items-center group relative z-10">
+        <div className={`${boxSize} rounded-full overflow-hidden border-4 ${officer.color} bg-white shadow-xl flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110 mb-4`}>
+          {officer.image ? (
+            <img src={officer.image} alt={officer.name} className="w-full h-full object-cover" />
+          ) : (
+            <User className={`w-1/2 h-1/2 ${officer.color.split(' ')[1]} opacity-50`} />
+          )}
+        </div>
+        
+        <div className="text-center bg-white/90 backdrop-blur-sm px-4 py-2 rounded-xl shadow-sm border border-gray-100">
+          <h3 className="font-bold text-gray-900 text-lg leading-tight">{officer.name}</h3>
+          <p className={`text-sm font-semibold mt-1 ${officer.color.split(' ')[1]}`}>{officer.designation}</p>
+          <p className="text-xs text-gray-500">{officer.role}</p>
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <div className="max-w-6xl mt-20 mx-auto p-4 md:p-8">
-      
-      {/* Title Section */}
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-          School Administration & Leadership
-        </h2>
-        {/* <p className="text-gray-500 mt-2">Hierarchy & Preface Messages</p> */}
-      </div>
+    <div className="min-h-screen bg-slate-50 mt-16 py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Header */}
+        <div className="text-center mb-20">
+          <span className="bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-sm font-semibold">
+            Leadership & Governance
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-4">
+            Top Officers of School Education
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            The visionary leaders guiding the Tamil Nadu School Education Department towards excellence and innovation.
+          </p>
+        </div>
 
-      {/* --- PART 1: HIERARCHY FLOW --- */}
-      <div className="max-w-4xl mx-auto mb-24">
-        <div className="relative flex flex-col items-center">
-          {hierarchy.map((item, index) => (
-            <div key={index} className="flex flex-col items-center w-full">
-              {/* Hierarchy Node */}
-              <div className="relative bg-white border border-gray-100 shadow-lg rounded-xl p-4 w-full md:w-3/4 hover:shadow-xl transition-all duration-300 z-10">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center border border-gray-200 overflow-hidden shrink-0">
-                    {item.image ? (
-                       <img src={item.image} alt={item.label} className="w-full h-full object-cover p-1" />
-                    ) : (
-                       item.icon
-                    )}
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-xs font-bold text-gray-400 uppercase">{item.label}</p>
-                    <p className="text-gray-800 font-bold text-lg">{item.value}</p>
-                    <button onClick={() => toggleExpand(index)} className="flex items-center gap-1 text-xs text-purple-600 font-semibold mt-1">
-                      {expandedIndex === index ? 'Hide Details' : 'View Functions'}
-                      {expandedIndex === index ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                    </button>
-                    {expandedIndex === index && (
-                      <ul className="mt-2 text-sm text-gray-600 list-disc list-inside bg-gray-50 p-2 rounded">
-                        {item.points.map((pt, i) => <li key={i}>{pt}</li>)}
-                      </ul>
-                    )}
-                  </div>
-                </div>
-              </div>
-              {/* Connector Arrow */}
-              {index < hierarchy.length - 1 && (
-                <div className="flex flex-col items-center">
-                  <div className="h-4 w-0.5 bg-gray-300"></div>
-                  <ArrowDown className="w-4 h-4 text-gray-400" />
-                  <div className="h-4 w-0.5 bg-gray-300"></div>
-                </div>
-              )}
-            </div>
-          ))}
+        {/* --- PYRAMID CHART STRUCTURE --- */}
+        <div className="relative flex flex-col items-center space-y-16 lg:space-y-20 pb-10">
           
-          {/* Final Connector */}
-          <div className="h-6 w-0.5 bg-gray-300"></div>
-          <ArrowDown className="w-5 h-5 text-gray-400 mb-2" />
-
-          {/* School Node */}
-          <div className="bg-gradient-to-r from-purple-700 to-pink-700 text-white rounded-xl p-6 text-center shadow-xl w-full md:w-3/4">
-            <School className="w-8 h-8 mx-auto mb-2" />
-            <h3 className="text-xl font-bold">Corporation Higher Secondary School</h3>
-            <p className="text-purple-100 text-sm">Sundararajapuram, Madurai - 625011</p>
+          {/* Connecting Lines Layer (Background) */}
+          <div className="absolute inset-0 pointer-events-none hidden lg:block">
+            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 640 160 L 640 240 M 640 240 L 300 240 L 300 300 M 640 240 L 980 240 L 980 300 M 640 240 L 640 300" stroke="#CBD5E1" strokeWidth="2" fill="none" />
+            </svg>
           </div>
-        </div>
-      </div>
 
-      {/* --- PART 2: DIGNITARIES & PREFACE MESSAGES --- */}
-      <div className="border-t border-gray-200 pt-16">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-gray-800">Leadership Desk</h3>
-          <p className="text-gray-500 mt-2">Messages from our esteemed leaders</p>
-        </div>
+          {/* Level 1: Secretary */}
+          <div className="w-full flex justify-center">
+            <OfficerCard officer={officers.head} size="large" />
+          </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-          {dignitaries.map((person, index) => (
-            <div 
-              key={index} 
-              className={`bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 hover:-translate-y-1 transition-transform duration-300`}
-              style={{ borderColor: person.color }} // This doesn't work with Tailwind classes dynamically usually, doing inline style for fallback or use class mapping.
-            >
-              {/* Card Header Gradient */}
-              <div className={`h-24 bg-gradient-to-r ${person.color} opacity-90 relative`}>
-                <div className="absolute -bottom-10 left-6">
-                  <div className="w-24 h-24 rounded-xl border-4 border-white bg-white shadow-md overflow-hidden">
-                    {person.image ? (
-                      <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
-                    ) : (
-                      <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
-                        <UserCircle className="w-16 h-16" />
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+          {/* Level 2: Directors */}
+          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 justify-items-center">
+            {officers.level2.map((officer, index) => (
+              <OfficerCard key={index} officer={officer} />
+            ))}
+          </div>
 
-              {/* Card Content */}
-              <div className="pt-12 px-6 pb-6">
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900">{person.name}</h4>
-                    <p className={`font-semibold bg-gradient-to-r ${person.color} bg-clip-text text-transparent`}>
-                      {person.role}
-                    </p>
-                    <p className="text-xs text-gray-500 font-medium mt-1">{person.tamilRole}</p>
-                  </div>
-                  <Quote className="w-8 h-8 text-gray-200 rotate-180" />
-                </div>
-                
-                <div className="bg-gray-50 p-4 rounded-lg relative">
-                  <p className="text-gray-600 italic text-sm leading-relaxed">
-                    "{person.message}"
-                  </p>
-                </div>
-              </div>
+          {/* Level 3: Joint Directors */}
+          <div className="w-full bg-white rounded-3xl p-8 shadow-sm border border-gray-100 mt-8">
+            <h3 className="text-center text-gray-500 font-semibold mb-8 uppercase tracking-wider text-sm">Joint Directors (Operations)</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 justify-items-center">
+              {officers.level3.map((officer, index) => (
+                <OfficerCard key={index} officer={officer} />
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
 
+        </div>
+
+        {/* Footer Actions */}
+        <div className="mt-16 flex flex-col items-center gap-4">
+          
+          {/* 1. PDF Download Button */}
+          <a 
+            href={orgchartPdf} 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 bg-white border-2 border-indigo-100 hover:border-indigo-600 px-8 py-4 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 w-full max-w-md"
+          >
+            <div className="bg-indigo-100 p-2 rounded-lg group-hover:bg-indigo-600 transition-colors">
+              <FileText className="w-6 h-6 text-indigo-600 group-hover:text-white" />
+            </div>
+            <div className="text-left flex-1">
+              <p className="text-gray-900 font-bold group-hover:text-indigo-600 transition-colors">Download Organization Chart</p>
+              <p className="text-xs text-gray-500">Full detailed hierarchy (PDF)</p>
+            </div>
+            <Download className="w-5 h-5 text-gray-400 group-hover:text-indigo-600" />
+          </a>
+
+          {/* 2. Official Website Link (ADDED THIS) */}
+          <a 
+            href="https://tnschools.gov.in" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-8 py-3 rounded-2xl transition-all duration-300 w-full max-w-md"
+          >
+            <div className="bg-white p-2 rounded-lg shadow-sm">
+              <Globe className="w-5 h-5 text-indigo-600" />
+            </div>
+            <div className="text-left flex-1">
+              <p className="text-indigo-800 font-semibold">Visit Official TN Schools Website</p>
+              <p className="text-xs text-indigo-600">tnschools.gov.in</p>
+            </div>
+            <ExternalLink className="w-4 h-4 text-indigo-400 group-hover:text-indigo-600" />
+          </a>
+
+        </div>
+
+      </div>
     </div>
   );
 }

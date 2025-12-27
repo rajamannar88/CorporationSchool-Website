@@ -23,6 +23,7 @@ export default function Library() {
       links: [
         { name: "Dept. of School Education – TN", url: "https://tnschools.gov.in/welcome" },
         { name: "Government of Tamil Nadu", url: "https://www.tn.gov.in/index.php" },
+        { name: "TN Govt – Department List", url: "https://www.tn.gov.in/department_list.php" },
         { name: "Social Welfare Dept", url: "https://www.tnsocialwelfare.tn.gov.in/en" },
         { name: "Ministry of Education India", url: "https://www.education.gov.in/en" }
       ]
@@ -34,7 +35,7 @@ export default function Library() {
       gradient: "from-red-600 to-red-400",
       description: "Video lessons and official educational channels.",
       links: [
-        { name: "Kalvi Tholaikkatchi TV", url: "https://www.youtube.com/@kalvitvofficial" },
+        { name: "Kalvi Tholaikkatchi TV", url: "https://www.youtube.com/channel/UCMJpX8Yd0E5fD4xG-t8k5wA" },
         { name: "TN School Education Official", url: "https://www.youtube.com/@tnschoolsofficial/videos" }
       ]
     },
@@ -80,7 +81,9 @@ export default function Library() {
       description: "Open source platforms for reading and research.",
       links: [
         { name: "Project Gutenberg", url: "https://www.gutenberg.org/" },
-        { name: "Directory of Open Access Books", url: "https://www.doabooks.org/doab" }
+        { name: "Delhi University eBooks", url: "https://csl.du.ac.in/Free_ebooks.htm" },
+        { name: "Dir. Open Access Books", url: "https://www.doabooks.org/doab" },
+        { name: "E-Books Directory", url: "https://www.e-booksdirectory.com/" }
       ]
     },
     {
@@ -123,6 +126,8 @@ export default function Library() {
       description: "Current affairs and educational magazines.",
       links: [
         { name: "TN School Magazines", url: "https://tnschools.gov.in/magazine-page" },
+        // Added Magzter here
+        { name: "Magzter (Digital Magazines)", url: "https://www.magzter.com/" },
         { name: "E-Newspapers (KCL)", url: "https://www.kalaignarcentenarylibrary.org/p/e-resources-newspapers.html" }
       ]
     },
@@ -147,6 +152,7 @@ export default function Library() {
       gradient: "from-slate-600 to-slate-400",
       description: "Employment news and career guidance.",
       links: [
+        { name: "Job News (Jagran Josh)", url: "https://www.jagranjosh.com/employment-news-st-1348730577" },
         { name: "TN Career Services", url: "https://tamilnaducareerservices.tn.gov.in/vle/vle_home" },
         { name: "TN Employment Exchange", url: "https://tnvelaivaaippu.gov.in/career_booklet.html" }
       ]
@@ -158,10 +164,11 @@ export default function Library() {
       gradient: "from-rose-600 to-rose-400",
       description: "Heritage sites and educational travel.",
       links: [
-        { name: "TN Tourism – Temples", url: "https://www.tamilnadutourism.tn.gov.in/destinations/temples" }
+        { name: "TN Tourism – Temples", url: "https://www.tamilnadutourism.tn.gov.in/destinations/temples" },
+        // Added Wanderlust here
+        { name: "Wanderlust Travel Magazine", url: "https://www.wanderlustmagazine.com/" }
       ]
     }
-
   ];
 
   const filteredResources = resources.filter(cat => 
@@ -174,7 +181,7 @@ export default function Library() {
       
       {/* --- HERO SECTION --- */}
       <div className="relative h-[600px] overflow-hidden">
-        {/* Background Image - Parallax fixed */}
+        {/* Background Image - Fixed Parallax */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ 
@@ -185,7 +192,7 @@ export default function Library() {
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/95 via-purple-900/85 to-blue-900/90"></div>
         </div>
 
-        {/* Content Container - Pushed up with padding-bottom to avoid wave overlap */}
+        {/* Content Container */}
         <div className="relative h-full flex flex-col justify-center items-center text-center px-4 max-w-5xl mx-auto z-20 pb-32">
           <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-blue-200 mb-6">
@@ -226,7 +233,7 @@ export default function Library() {
           </div>
           {/* Quick Filters */}
           <div className="flex flex-wrap gap-2 mt-4 justify-center">
-            {['Scholarships', 'Textbooks', 'Exams', 'Jobs'].map((tag) => (
+            {['Scholarships', 'Textbooks', 'Exams', 'Jobs', 'Tourism'].map((tag) => (
               <button 
                 key={tag}
                 onClick={() => setSearchTerm(tag)}

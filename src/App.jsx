@@ -11,6 +11,7 @@ import AchievementsPage from './Pages/AchievementsPage'
 import LoginPage from './Pages/LoginPage'
 import LibraryPage from './Pages/LibraryPage'; 
 import FacultyPage from './Pages/FacultyPage'
+import ClassStructPage from './Pages/ClassStructurePage';
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         <Route path='/login' element={<LoginPage/>}/>
         <Route path="/lib" element={<LibraryPage />} />
         <Route path="/faculty" element={<FacultyPage />} />
+        <Route path="/classstruct" element={<ClassStructPage />} />
+
         
       </Routes>
     </>

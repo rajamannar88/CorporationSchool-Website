@@ -1,18 +1,26 @@
 // src/Components/Footer.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube, ChevronRight, Clock, Heart } from 'lucide-react';
+import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Youtube, ChevronRight, Clock, Heart, Share2 } from 'lucide-react';
 import logo from '../schoolassets/newSchoollogo.png';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  // ✅ UPDATED: Smooth Scroll Function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // <--- This enables the smooth animation
+    });
+  };
 
   const quickLinks = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/history' },
     { name: 'Academics', path: '/curriculum' },
     { name: 'Admissions', path: '/admission-process' },
-    // { name: 'Library', path: '/lib' }, // Added Library here
+    { name: 'Library', path: '/lib' },
     { name: 'Achievements', path: '/achievements' },
     { name: 'Contact Us', path: '/contact' }
   ];
@@ -43,19 +51,24 @@ export default function Footer() {
             <p className="text-sm leading-relaxed text-gray-400">
               Nurturing young minds with excellence in education, character building, and creating future leaders since 1975.
             </p>
+            
+            {/* Social Media Links */}
             <div className="flex gap-4">
-              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
+              <a href="https://www.facebook.com/tnschoolsedu?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-blue-600 hover:text-white transition-all duration-300">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-sky-500 hover:text-white transition-all duration-300">
+              <a href="https://twitter.com/tnschoolsedu" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-sky-500 hover:text-white transition-all duration-300">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-pink-600 hover:text-white transition-all duration-300">
+              <a href="https://instagram.com/tnschoolsedu?igshid=MDM4ZDc5MmU=" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-pink-600 hover:text-white transition-all duration-300">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="bg-slate-800 p-2 rounded-full hover:bg-red-600 hover:text-white transition-all duration-300">
+              <a href="https://youtube.com/@tnschoolsofficial" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-red-600 hover:text-white transition-all duration-300">
                 <Youtube className="w-5 h-5" />
               </a>
+              {/* <a href="https://sharechat.com/profile/tnschoolsedu?referer=tagProfileSearchPage" target="_blank" rel="noopener noreferrer" className="bg-slate-800 p-2 rounded-full hover:bg-emerald-500 hover:text-white transition-all duration-300">
+                <Share2 className="w-5 h-5" />
+              </a> */}
             </div>
           </div>
 
@@ -70,6 +83,7 @@ export default function Footer() {
                 <li key={index}>
                   <Link 
                     to={link.path}
+                    onClick={scrollToTop}
                     className="flex items-center gap-2 hover:text-indigo-400 transition-colors duration-300 group"
                   >
                     <ChevronRight className="w-4 h-4 text-slate-600 group-hover:text-indigo-500" />
@@ -133,7 +147,12 @@ export default function Footer() {
             <h4 className="text-white font-bold text-sm mb-3">Facilities</h4>
             <div className="flex flex-wrap gap-2">
               {facilities.map((item, index) => (
-                <Link key={index} to={item.path} className="text-xs bg-slate-800 text-gray-400 px-3 py-1 rounded-full border border-slate-700 hover:border-pink-500 hover:text-white transition-all cursor-pointer">
+                <Link 
+                  key={index} 
+                  to={item.path} 
+                  onClick={scrollToTop}
+                  className="text-xs bg-slate-800 text-gray-400 px-3 py-1 rounded-full border border-slate-700 hover:border-pink-500 hover:text-white transition-all cursor-pointer"
+                >
                   {item.name}
                 </Link>
               ))}
@@ -148,8 +167,8 @@ export default function Footer() {
               © {currentYear} Corporation Higher Secondary School. All rights reserved.
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-500">
-              <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="#" className="hover:text-white transition-colors">Terms of Use</Link>
+              <Link to="#" onClick={scrollToTop} className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="#" onClick={scrollToTop} className="hover:text-white transition-colors">Terms of Use</Link>
               <span className="flex items-center gap-1">
                 Made with <Heart className="w-3 h-3 text-red-500 fill-red-500" /> in Madurai
               </span>
